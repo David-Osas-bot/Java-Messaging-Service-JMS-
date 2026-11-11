@@ -18,7 +18,7 @@ import jakarta.ws.rs.core.Response;
 import java.util.List;
 import jakarta.ejb.EJB;
 
-@Path("/messages")
+@Path("/users")
 public class JakartaEE11Resource {
 
     @Inject

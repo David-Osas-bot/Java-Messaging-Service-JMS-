@@ -6,13 +6,10 @@ package com.user.Repository;
 
 import com.user.Entity.User;
 import jakarta.data.repository.CrudRepository;
-//import jakarta.data.repository.Query;
 import jakarta.data.repository.Repository;
-//import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, Integer> {
-//
-//    @Query("SELECT m FROM MessageEntity m")
-//    List<Messages> findAllMessages();
+     Optional<User> findByEmail(String email);
 }
