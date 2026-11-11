@@ -1,9 +1,9 @@
-C:\Users\DELL\Documents\NetBeansProjects\JavaMessagingSystem\src\main\java\com\message\consumer\UserEventConsumer.java
-C:\Users\DELL\Documents\NetBeansProjects\JavaMessagingSystem\src\main\java\com\message\Entity\Messages.java
-C:\Users\DELL\Documents\NetBeansProjects\JavaMessagingSystem\src\main\java\com\message\producer\UserEventProducer.java
-C:\Users\DELL\Documents\NetBeansProjects\JavaMessagingSystem\src\main\java\com\message\Repository\MessageRepository.java
-C:\Users\DELL\Documents\NetBeansProjects\JavaMessagingSystem\src\main\java\com\message\RequestDTO\RequestDTO.java
-C:\Users\DELL\Documents\NetBeansProjects\JavaMessagingSystem\src\main\java\com\message\ResponseDTO\ResponseDTO.java
-C:\Users\DELL\Documents\NetBeansProjects\JavaMessagingSystem\src\main\java\com\message\Service\MessageService.java
 C:\Users\DELL\Documents\NetBeansProjects\JavaMessagingSystem\src\main\java\com\myjavatest\javamessagingsystem\JakartaRestConfiguration.java
 C:\Users\DELL\Documents\NetBeansProjects\JavaMessagingSystem\src\main\java\com\myjavatest\javamessagingsystem\resources\JakartaEE11Resource.java
+C:\Users\DELL\Documents\NetBeansProjects\JavaMessagingSystem\src\main\java\com\user\consumer\UserEventConsumer.java
+C:\Users\DELL\Documents\NetBeansProjects\JavaMessagingSystem\src\main\java\com\user\Entity\User.java
+C:\Users\DELL\Documents\NetBeansProjects\JavaMessagingSystem\src\main\java\com\user\producer\UserEventProducer.java
+C:\Users\DELL\Documents\NetBeansProjects\JavaMessagingSystem\src\main\java\com\user\Repository\UserRepository.java
+C:\Users\DELL\Documents\NetBeansProjects\JavaMessagingSystem\src\main\java\com\user\RequestDTO\UserRequestDTO.java
+C:\Users\DELL\Documents\NetBeansProjects\JavaMessagingSystem\src\main\java\com\user\ResponseDTO\UserResponseDTO.java
+C:\Users\DELL\Documents\NetBeansProjects\JavaMessagingSystem\src\main\java\com\user\Service\UserService.java

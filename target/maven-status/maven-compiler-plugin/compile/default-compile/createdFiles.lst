@@ -1,9 +1,9 @@
-com\message\producer\UserEventProducer.class
-com\message\ResponseDTO\ResponseDTO.class
-com\message\Repository\MessageRepository.class
+com\user\producer\UserEventProducer.class
 com\myjavatest\javamessagingsystem\JakartaRestConfiguration.class
-com\message\Service\MessageService.class
-com\message\RequestDTO\RequestDTO.class
-com\message\Entity\Messages.class
-com\message\consumer\UserEventConsumer.class
+com\user\consumer\UserEventConsumer.class
+com\user\RequestDTO\UserRequestDTO.class
+com\user\Repository\UserRepository.class
+com\user\ResponseDTO\UserResponseDTO.class
+com\user\Service\UserService.class
+com\user\Entity\User.class
 com\myjavatest\javamessagingsystem\resources\JakartaEE11Resource.class

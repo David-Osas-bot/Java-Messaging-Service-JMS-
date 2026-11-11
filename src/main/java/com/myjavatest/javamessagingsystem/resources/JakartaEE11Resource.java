@@ -1,9 +1,9 @@
 package com.myjavatest.javamessagingsystem.resources;
 
-import com.message.RequestDTO.RequestDTO;
-import com.message.ResponseDTO.ResponseDTO;
-import com.message.Service.MessageService;
-import com.message.producer.UserEventProducer;
+import com.user.RequestDTO.UserRequestDTO;
+import com.user.ResponseDTO.UserResponseDTO;
+import com.user.Service.UserService;
+import com.user.producer.UserEventProducer;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -22,7 +22,7 @@ import jakarta.ejb.EJB;
 public class JakartaEE11Resource {
 
     @Inject
-    MessageService messageService;
+    UserService messageService;
 
     @EJB
     private UserEventProducer producer;
@@ -32,9 +32,9 @@ public class JakartaEE11Resource {
     @Path("/create")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response createUser(RequestDTO request) {
+    public Response createUser(UserRequestDTO request) {
 
-        ResponseDTO response = messageService.createUser(request);
+        UserResponseDTO response = messageService.createUser(request);
 
         return Response.status(Response.Status.CREATED)
                 .entity(response)
@@ -47,7 +47,7 @@ public class JakartaEE11Resource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getPerUser(@PathParam("id") int id) {
 
-        ResponseDTO response = messageService.getPerUser(id);
+        UserResponseDTO response = messageService.getPerUser(id);
 
         if (response == null) {
             return Response.status(Response.Status.NOT_FOUND)
@@ -64,7 +64,7 @@ public class JakartaEE11Resource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
 
-        List<ResponseDTO> response = messageService.getAll();
+        List<UserResponseDTO> response = messageService.getAll();
 
         return Response.ok(response).build();
     }
@@ -75,9 +75,9 @@ public class JakartaEE11Resource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response update(
             @PathParam("id") int id,
-            RequestDTO request) {
+            UserRequestDTO request) {
 
-        ResponseDTO response = messageService.update(id, request);
+        UserResponseDTO response = messageService.update(id, request);
 
         if (response == null) {
             return Response.status(Response.Status.NOT_FOUND)
