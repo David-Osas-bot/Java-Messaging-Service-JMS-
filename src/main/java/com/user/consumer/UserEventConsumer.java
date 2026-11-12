@@ -1,29 +1,34 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.user.consumer;
+
+import com.user.RequestDTO.NotificationRequestDTO;
+import com.user.Service.NotificationService;
 
 import jakarta.ejb.MessageDriven;
 import jakarta.ejb.ActivationConfigProperty;
+import jakarta.inject.Inject;
 import jakarta.jms.Message;
 import jakarta.jms.MessageListener;
 import jakarta.jms.TextMessage;
-import jakarta.jms.JMSException;
+import jakarta.json.bind.Jsonb;
+import jakarta.json.bind.JsonbBuilder;
+import jakarta.json.bind.JsonbException;
 
 @MessageDriven(
-    activationConfig = {
-        @ActivationConfigProperty(
-            propertyName = "destinationLookup",
-            propertyValue = "jms/UserEventsQueue"
-        ),
-        @ActivationConfigProperty(
-            propertyName = "destinationType",
-            propertyValue = "jakarta.jms.Queue"
-        )
-    }
+        activationConfig = {
+            @ActivationConfigProperty(
+                    propertyName = "destinationLookup",
+                    propertyValue = "jms/UserEventsQueue"
+            ),
+            @ActivationConfigProperty(
+                    propertyName = "destinationType",
+                    propertyValue = "jakarta.jms.Queue"
+            )
+        }
 )
 public class UserEventConsumer implements MessageListener {
+
+    @Inject
+    private NotificationService notificationService;
 
     @Override
     public void onMessage(Message message) {
@@ -35,24 +40,37 @@ public class UserEventConsumer implements MessageListener {
                 String receivedMessage = textMessage.getText();
 
                 System.out.println(
-                    "GlassFish JMS: Message received from producer."
+                        "GlassFish JMS: Message received from producer."
                 );
 
-                System.out.println(
-                    "Consumer: " + receivedMessage
-                );
+                try (Jsonb jsonb = JsonbBuilder.create()) {
 
-                System.out.println(
-                    "Consumer: Message processed successfully."
-                );
+                    NotificationRequestDTO event
+                            = jsonb.fromJson(
+                                    receivedMessage,
+                                    NotificationRequestDTO.class
+                            );
 
+                    notificationService.saveNotification(event);
+
+                    System.out.println(
+                            "Consumer: Notification saved successfully."
+                    );
+                }
+
+            } else {
+                throw new IllegalArgumentException(
+                        "Unsupported JMS message type"
+                );
             }
 
-        } catch (JMSException e) {
+        } catch (Exception e) {
 
             e.printStackTrace();
 
+            throw new IllegalStateException(
+                    "Failed to process notification message", e
+            );
         }
-
     }
 }

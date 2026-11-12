@@ -10,6 +10,10 @@ import java.util.stream.Collectors;
 import com.user.Repository.UserRepository;
 import com.user.RequestDTO.LoginRequestDTO;
 
+import com.user.RequestDTO.NotificationRequestDTO;
+import com.user.producer.UserEventProducer;
+import java.time.Instant;
+
 @ApplicationScoped
 public class UserService {
 
@@ -18,6 +22,9 @@ public class UserService {
 
     @Inject
     PasswordHashService passwordHashService;
+
+    @Inject
+    UserEventProducer userEventProducer;
 
     // CREATE USER
     public UserResponseDTO createUser(UserRequestDTO request) {
@@ -30,6 +37,18 @@ public class UserService {
         );
 
         User saved = userRepository.insert(entity);
+
+        // Publish registration event
+        NotificationRequestDTO event = new NotificationRequestDTO();
+
+        event.setUserId(saved.getId());
+        event.setFullName(saved.getFullName());
+        event.setEmail(saved.getEmail());
+        event.setEventType("USER_REGISTERED");
+        event.setOccurredAt(Instant.now());
+
+        userEventProducer.sendEvent(event);
+
         return toResponse(saved);
     }
 
@@ -116,7 +135,17 @@ public class UserService {
             return null;
         }
 
-        // 4. Return safe user information
+        // Publish login event
+        NotificationRequestDTO event = new NotificationRequestDTO();
+
+        event.setUserId(user.getId());
+        event.setFullName(user.getFullName());
+        event.setEmail(user.getEmail());
+        event.setEventType("USER_LOGGED_IN");
+        event.setOccurredAt(Instant.now());
+
+        userEventProducer.sendEvent(event);
+
         return toResponse(user);
     }
 

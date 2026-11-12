@@ -1,14 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.user.producer;
+
+import com.user.RequestDTO.NotificationRequestDTO;
 
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.jms.JMSContext;
 import jakarta.jms.Queue;
 import jakarta.annotation.Resource;
+import jakarta.json.bind.Jsonb;
+import jakarta.json.bind.JsonbBuilder;
 
 @Stateless
 public class UserEventProducer {
@@ -19,12 +19,24 @@ public class UserEventProducer {
     @Resource(lookup = "jms/UserEventsQueue")
     private Queue userEventsQueue;
 
-    public void sendMessage(String message) {
+    public void sendEvent(NotificationRequestDTO event) {
 
-        System.out.println("Producer: Sending message...");
+        try (Jsonb jsonb = JsonbBuilder.create()) {
 
-        jmsContext.createProducer()
-                  .send(userEventsQueue, message);
+            String message = jsonb.toJson(event);
 
+            System.out.println("Producer: Sending event...");
+
+            jmsContext.createProducer()
+                    .send(userEventsQueue, message);
+
+            System.out.println("Producer: Event sent successfully.");
+
+        } catch (Exception e) {
+
+            throw new IllegalStateException(
+                    "Unable to publish user event", e
+            );
+        }
     }
 }

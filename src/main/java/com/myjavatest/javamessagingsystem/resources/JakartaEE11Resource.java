@@ -104,18 +104,18 @@ public class JakartaEE11Resource {
 
         return Response.noContent().build();
     }
-
-    @POST
-    @Path("/send")
-    @Produces(MediaType.TEXT_PLAIN)
-    public Response sendMessage() {
-
-        producer.sendMessage(
-                "Hello from Java Messaging System!"
-        );
-
-        return Response.ok(
-                "Message submitted successfully!"
-        ).build();
-    }
+//
+//    @POST
+//    @Path("/send")
+//    @Produces(MediaType.TEXT_PLAIN)
+//    public Response sendMessage() {
+//
+//        producer.sendMessage(
+//                "Hello from Java Messaging System!"
+//        );
+//
+//        return Response.ok(
+//                "Message submitted successfully!"
+//        ).build();
+//    }
 }
