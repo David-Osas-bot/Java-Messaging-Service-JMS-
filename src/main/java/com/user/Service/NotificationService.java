@@ -45,6 +45,14 @@ public class NotificationService {
         return toResponse(notification);
     }
 
+    // GET ALL NOTIFICATIONS (newest first)
+    public List<NotificationResponseDTO> getAll() {
+        List<NotificationResponseDTO> result = new ArrayList<>();
+        notificationRepository.findAll().forEach(n -> result.add(toResponse(n)));
+        result.sort((a, b) -> b.getOccurredAt().compareTo(a.getOccurredAt()));
+        return result;
+    }
+
     // GET ALL NOTIFICATIONS FOR A USER
     public List<NotificationResponseDTO> getByUserId(Integer userId) {
         List<Notification> notifications = notificationRepository.findByUserId(userId);

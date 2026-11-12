@@ -87,9 +87,9 @@ public class UserService {
         entity.setEmail(request.getEmail());
         entity.setPhone(request.getPhone());
 
-        boolean updated = userRepository.update(entity);
+        User updated = userRepository.save(entity);
 
-        if (!updated) {
+        if (updated == null) {
             return null;
         }
 

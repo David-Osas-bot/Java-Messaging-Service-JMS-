@@ -35,11 +35,9 @@ public class NotificationResource {
 
     // GET /notifications?userId=3  -> get all for a user
     @GET
-    public List<NotificationResponseDTO> getByUser(
-            @QueryParam("userId") Integer userId) {
-
+    public List<NotificationResponseDTO> getByUser(@QueryParam("userId") Integer userId) {
         if (userId == null) {
-            throw new BadRequestException("userId is required, e.g. /notifications?userId=3");
+            return notificationService.getAll();
         }
         return notificationService.getByUserId(userId);
     }
