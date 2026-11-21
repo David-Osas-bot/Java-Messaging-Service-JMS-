@@ -13,6 +13,8 @@ C:\Users\DELL\Documents\NetBeansProjects\JavaMessagingSystem\src\main\java\com\u
 C:\Users\DELL\Documents\NetBeansProjects\JavaMessagingSystem\src\main\java\com\user\RequestDTO\UserRequestDTO.java
 C:\Users\DELL\Documents\NetBeansProjects\JavaMessagingSystem\src\main\java\com\user\ResponseDTO\NotificationResponseDTO.java
 C:\Users\DELL\Documents\NetBeansProjects\JavaMessagingSystem\src\main\java\com\user\ResponseDTO\UserResponseDTO.java
+C:\Users\DELL\Documents\NetBeansProjects\JavaMessagingSystem\src\main\java\com\user\Service\JwtAuthFilter.java
+C:\Users\DELL\Documents\NetBeansProjects\JavaMessagingSystem\src\main\java\com\user\Service\JwtService.java
 C:\Users\DELL\Documents\NetBeansProjects\JavaMessagingSystem\src\main\java\com\user\Service\NotificationService.java
 C:\Users\DELL\Documents\NetBeansProjects\JavaMessagingSystem\src\main\java\com\user\Service\PasswordHashService.java
 C:\Users\DELL\Documents\NetBeansProjects\JavaMessagingSystem\src\main\java\com\user\Service\UserService.java

@@ -1,8 +1,10 @@
+com\user\Service\JwtService.class
 com\user\Service\NotificationService.class
 com\user\RequestDTO\LoginRequestDTO.class
 com\myjavatest\javamessagingsystem\resources\AuthResource.class
 com\user\consumer\UserEventConsumer.class
 com\user\RequestDTO\UserRequestDTO.class
+com\user\Service\JwtAuthFilter.class
 com\user\Repository\UserRepository.class
 com\user\ResponseDTO\NotificationResponseDTO.class
 com\user\Service\UserService.class
